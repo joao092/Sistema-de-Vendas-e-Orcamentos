@@ -1,27 +1,9 @@
-databases:
-  - name: vendas-orcamentos-db
-    plan: free
-    databaseName: vendas_orcamentos
-    user: vendas_orcamentos_user
-
 services:
   - type: web
     name: vendas-orcamentos
     runtime: node
     plan: free
     region: oregon
+    rootDir: vendas-orcamentos
     buildCommand: npm install
     startCommand: npm run db:migrate && npm run db:seed && npm start
-    envVars:
-      - key: DATABASE_URL
-        fromDatabase:
-          name: vendas-orcamentos-db
-          property: connectionString
-      - key: JWT_SECRET
-        generateValue: true
-      - key: PGSSL
-        value: "true"
-      - key: ADMIN_EMAIL
-        value: admin@ferragensw.com.br
-      - key: ADMIN_PASSWORD
-        sync: false
