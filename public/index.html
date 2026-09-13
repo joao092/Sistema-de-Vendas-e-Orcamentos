@@ -102,25 +102,25 @@
 
         <div class="card">
           <h3 id="titulo-form-cliente">Cadastrar cliente</h3>
-          <form id="form-cliente" novalidate>
+          <form id="form-cliente" novalidate autocomplete="off">
             <input type="hidden" id="cli-id">
             <div class="grid-2">
               <div class="field" id="cli-nome-campo">
                 <label>Nome</label>
-                <input type="text" id="cli-nome" placeholder="Ex: José Ferreira">
+                <input type="text" id="cli-nome" placeholder="Ex: José Ferreira" autocomplete="off">
                 <div class="field-error">Informe o nome do cliente.</div>
               </div>
               <div class="field">
                 <label>Telefone</label>
-                <input type="text" id="cli-telefone" placeholder="(12) 99999-9999">
+                <input type="text" id="cli-telefone" placeholder="(12) 99999-9999" autocomplete="off">
               </div>
               <div class="field">
                 <label>E-mail</label>
-                <input type="email" id="cli-email" placeholder="cliente@email.com">
+                <input type="email" id="cli-email" placeholder="cliente@email.com" autocomplete="off">
               </div>
               <div class="field">
                 <label>Endereço</label>
-                <input type="text" id="cli-endereco" placeholder="Rua, número, bairro">
+                <input type="text" id="cli-endereco" placeholder="Rua, número, bairro" autocomplete="off">
               </div>
             </div>
             <div class="actions-bar">
@@ -148,12 +148,12 @@
 
         <div class="card">
           <h3 id="titulo-form-produto">Cadastrar produto</h3>
-          <form id="form-produto" novalidate>
+          <form id="form-produto" novalidate autocomplete="off">
             <input type="hidden" id="prod-id">
             <div class="grid-2">
               <div class="field" id="prod-nome-campo">
                 <label>Nome do produto</label>
-                <input type="text" id="prod-nome" placeholder="Ex: Parafuso 6mm">
+                <input type="text" id="prod-nome" placeholder="Ex: Parafuso 6mm" autocomplete="off">
                 <div class="field-error">Informe o nome do produto.</div>
               </div>
               <div class="field">
@@ -176,7 +176,7 @@
               </div>
               <div class="field" id="prod-preco-campo">
                 <label>Preço unitário (R$)</label>
-                <input type="number" id="prod-preco" placeholder="0,00" step="0.01" min="0.01">
+                <input type="number" id="prod-preco" placeholder="0,00" step="0.01" min="0.01" autocomplete="off">
                 <div class="field-error">Informe um preço válido.</div>
               </div>
             </div>
@@ -215,7 +215,7 @@
             </div>
             <div class="field">
               <label>Observação (opcional)</label>
-              <input type="text" id="orc-observacao" placeholder="Ex: entrega combinada para sexta-feira">
+              <input type="text" id="orc-observacao" placeholder="Ex: entrega combinada para sexta-feira" autocomplete="off">
             </div>
           </div>
         </div>
@@ -275,7 +275,7 @@
             </div>
             <div class="field">
               <label>Filtrar por cliente</label>
-              <input type="text" id="filtro-cliente" placeholder="Nome do cliente">
+              <input type="text" id="filtro-cliente" placeholder="Nome do cliente" autocomplete="off">
             </div>
           </div>
 
