@@ -125,6 +125,31 @@ function irPara(tela) {
 }
 
 // ---------------------------------------------------------
+// Configurações (troca de senha)
+// ---------------------------------------------------------
+async function salvarNovaSenha(ev) {
+  ev.preventDefault();
+  const senhaAtual = document.getElementById('senha-atual').value.trim();
+  const senhaNova = document.getElementById('senha-nova').value.trim();
+
+  marcarErro('senha-atual-campo', !senhaAtual);
+  marcarErro('senha-nova-campo', senhaNova.length < 6);
+  if (!senhaAtual || senhaNova.length < 6) return;
+
+  const btn = document.getElementById('btn-salvar-senha');
+  btn.disabled = true;
+  try {
+    await chamarApi(() => api.alterarSenha(senhaAtual, senhaNova), 'Erro ao alterar a senha.');
+    mostrarToast('Senha alterada com sucesso.');
+    document.getElementById('form-senha').reset();
+  } catch (err) {
+    // erro já mostrado pelo chamarApi
+  } finally {
+    btn.disabled = false;
+  }
+}
+
+// ---------------------------------------------------------
 // Dashboard
 // ---------------------------------------------------------
 async function carregarDashboard() {
@@ -558,6 +583,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   document.getElementById('form-produto').addEventListener('submit', salvarProduto);
   document.getElementById('btn-cancelar-produto').addEventListener('click', cancelarEdicaoProduto);
+
+  document.getElementById('form-senha').addEventListener('submit', salvarNovaSenha);
 
   document.getElementById('btn-add-item').addEventListener('click', adicionarItemOrcamento);
   document.getElementById('btn-salvar-orcamento').addEventListener('click', salvarOrcamento);

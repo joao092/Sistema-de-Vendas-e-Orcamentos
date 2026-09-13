@@ -55,6 +55,7 @@ async function apiRequest(metodo, caminho, corpo) {
 
 const api = {
   login: (email, senha) => apiRequest('POST', '/auth/login', { email, senha }),
+  alterarSenha: (senha_atual, senha_nova) => apiRequest('PUT', '/auth/senha', { senha_atual, senha_nova }),
 
   listarClientes: (busca) => apiRequest('GET', `/clientes${busca ? `?busca=${encodeURIComponent(busca)}` : ''}`),
   criarCliente: (dados) => apiRequest('POST', '/clientes', dados),
