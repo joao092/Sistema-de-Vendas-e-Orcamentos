@@ -4,21 +4,21 @@
 const API_BASE = '/api';
 
 function getToken() {
-  return localStorage.getItem('vo_token');
+  return sessionStorage.getItem('vo_token');
 }
 
 function setSessao(token, usuario) {
-  localStorage.setItem('vo_token', token);
-  localStorage.setItem('vo_usuario', JSON.stringify(usuario));
+  sessionStorage.setItem('vo_token', token);
+  sessionStorage.setItem('vo_usuario', JSON.stringify(usuario));
 }
 
 function limparSessao() {
-  localStorage.removeItem('vo_token');
-  localStorage.removeItem('vo_usuario');
+  sessionStorage.removeItem('vo_token');
+  sessionStorage.removeItem('vo_usuario');
 }
 
 function getUsuarioLogado() {
-  const raw = localStorage.getItem('vo_usuario');
+  const raw = sessionStorage.getItem('vo_usuario');
   return raw ? JSON.parse(raw) : null;
 }
 
