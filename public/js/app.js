@@ -483,10 +483,22 @@ async function carregarHistorico() {
         <td class="row-actions">
           <a onclick="verOrcamento(${o.id_orcamento})">Ver</a>
           <a onclick="abrirEdicaoOrcamento(${o.id_orcamento})">Editar</a>
+          <a class="del" onclick="excluirOrcamento(${o.id_orcamento})">Excluir</a>
         </td>
       </tr>`).join('');
   } catch (err) {
     tbody.innerHTML = '<tr><td colspan="6" class="empty-state">Erro ao carregar histórico.</td></tr>';
+  }
+}
+
+async function excluirOrcamento(id) {
+  if (!confirm('Deseja realmente excluir este orçamento? Essa ação não pode ser desfeita.')) return;
+  try {
+    await chamarApi(() => api.excluirOrcamento(id), 'Erro ao excluir orçamento.');
+    mostrarToast('Orçamento excluído com sucesso.');
+    carregarHistorico();
+  } catch (err) {
+    // erro já mostrado pelo chamarApi
   }
 }
 

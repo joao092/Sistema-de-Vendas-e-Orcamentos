@@ -117,7 +117,10 @@ router.delete('/:id', async (req, res) => {
     }
     return res.status(200).json({ mensagem: 'Produto excluído com sucesso.' });
   } catch (err) {
-    if (err.code === '23503') {
+    // Postgres usa códigos diferentes conforme a ação da FK:
+    // 23503 = foreign_key_violation (genérico)
+    // 23001 = restrict_violation (usado quando a FK é ON DELETE RESTRICT, como aqui)
+    if (err.code === '23503' || err.code === '23001') {
       return res.status(409).json({
         erro: 'Não é possível excluir: este produto está vinculado a orçamentos. Considere marcá-lo como inativo.',
       });
